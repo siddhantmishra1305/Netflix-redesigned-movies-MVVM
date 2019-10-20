@@ -24,14 +24,16 @@ class MovieViewController: UIViewController {
         moviesList.register(UINib(nibName: "PagerCell", bundle: nil), forCellReuseIdentifier: "PagerCell")
         
         viewModel.delegate = self
-//        viewModel.getMovieDetails(id: 384018)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getAllData()
+        if movies.count == 0 {
+            getAllData()
+        }
     }
     
     func getAllData(){
+        movies.removeAll()
         viewModel.getMovies(type: .HighestRated)
         viewModel.getMovies(type: .NowPlaying)
         viewModel.getMovies(type: .Popular)
