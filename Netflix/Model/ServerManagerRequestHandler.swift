@@ -69,8 +69,9 @@ internal enum ServerRequestRouter: URLRequestConvertible{
                 params["sort_by"] = "vote_average.desc"
                 
                 
-                let encoding = JSONEncoding.default
-                return try encoding.encode(mutableURLRequest, with: nil)
+
+                let encoding = URLEncoding(destination: URLEncoding.Destination.queryString)
+                return try encoding.encode(mutableURLRequest, with: params)
             } catch {
                 return mutableURLRequest
             }
@@ -81,8 +82,8 @@ internal enum ServerRequestRouter: URLRequestConvertible{
                 params["language"] = "\(Locale.preferredLanguages.first ?? "en-US")"
                 params["region"] = Locale.current.regionCode?.uppercased()
                 
-                let encoding = JSONEncoding.default
-                return try encoding.encode(mutableURLRequest, with: nil)
+                let encoding = URLEncoding(destination: URLEncoding.Destination.queryString)
+                return try encoding.encode(mutableURLRequest, with: params)
             } catch {
                 return mutableURLRequest
             }
@@ -94,8 +95,8 @@ internal enum ServerRequestRouter: URLRequestConvertible{
                 params["region"] = Locale.current.regionCode?.uppercased()
                 
                 
-                let encoding = JSONEncoding.default
-                return try encoding.encode(mutableURLRequest, with: nil)
+                 let encoding = URLEncoding(destination: URLEncoding.Destination.queryString)
+                return try encoding.encode(mutableURLRequest, with: params)
             } catch {
                 return mutableURLRequest
             }
@@ -107,8 +108,8 @@ internal enum ServerRequestRouter: URLRequestConvertible{
                 params["region"] = Locale.current.regionCode?.uppercased()
                 
                 
-                let encoding = JSONEncoding.default
-                return try encoding.encode(mutableURLRequest, with: nil)
+                let encoding = URLEncoding(destination: URLEncoding.Destination.queryString)
+                return try encoding.encode(mutableURLRequest, with: params)
             } catch {
                 return mutableURLRequest
             }
